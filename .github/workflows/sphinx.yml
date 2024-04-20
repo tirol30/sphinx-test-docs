@@ -20,29 +20,39 @@ concurrency:
   
 jobs:
   publish-docs:
+    # ビルド用の環境の設定
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
+    # Gitリポジトリをクローン
     steps:
     - name: Checkout
       uses: actions/checkout@v3
 
+    # ビルド用のPython環境の準備
     - name: Setup Python
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
         architecture: x64
 
+    # sphinxをインストール
     - run: pip install -U sphinx sphinx_rtd_theme
+    # モジュールからrstファイルをdocsに作成
+    # ベースのconf.pyなどは事前に作成しておく。
     - run: sphinx-apidoc -f -o ./docs ./src 
+    # rstファイル（＋その他）からhtmlなどを_buildに作成
     - run: sphinx-build -b html ./docs ./docs/_build
 
+    # 作成したhtmlなどをアップロード
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        # Upload entire repository
         path: './docs/_build'
+
+    # Pagesにデプロイ
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
