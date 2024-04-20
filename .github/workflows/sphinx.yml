@@ -35,7 +35,7 @@ jobs:
         architecture: x64
 
     - run: pip install -U sphinx sphinx_rtd_theme
-    - run: sphinx-apidoc -f -o ./src .
+    - run: sphinx-apidoc -f -o ./docs ./src 
     - run: sphinx-build -b html ./docs ./docs/_build
 
     - name: Upload artifact
