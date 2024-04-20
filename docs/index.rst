@@ -10,7 +10,7 @@ Welcome to my-moddd's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   mod_1
+   my_mod_1
 
 
 
