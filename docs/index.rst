@@ -7,7 +7,7 @@ Welcome to my-moddd's documentation!
 ====================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
 
    my_mod_1
