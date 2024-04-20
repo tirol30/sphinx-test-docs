@@ -36,7 +36,7 @@ jobs:
 
     - run: pip install -U sphinx
     - run: sphinx-apidoc -f -o ./src .
-    - run: sphinx-build -b html ./src ./docs
+    - run: sphinx-build -b html ./docs ./docs/_build
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
