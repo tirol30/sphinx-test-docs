@@ -1,9 +1,14 @@
 name: Sphinx
 
+# 
+# https://github.com/marketplace/actions/upload-github-pages-artifact
+
 on:
+  # mainブランチにプッシュされたら実行
   push:
     branches:
       - main
+  # 一応手動実行もできるようにしておく
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -46,7 +51,9 @@ jobs:
     # rstファイル（＋その他）からhtmlなどを_buildに作成
     - run: sphinx-build -b html ./docs ./docs/_build
 
-    # 作成したhtmlなどをアップロード
+    # 作成したhtmlなどをartifactsとしてアップロード
+    # artifactsは90日で削除されるはず？（ログと同じ）
+    # https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
