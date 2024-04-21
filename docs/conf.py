@@ -20,7 +20,7 @@ release = "1.0"
 extensions = []
 extensions = [
     "sphinx.ext.autodoc",  # ソースコード読み込み用
-    "sphinx.ext.napoleon",  # docstring パース用
+    "numpydoc",  # docstring パース用
     "sphinx_rtd_theme",  # Read the Docs テーマ (今回は不要*1)
     # "sphinx_multiversion",  # マルチバージョン用
 ]

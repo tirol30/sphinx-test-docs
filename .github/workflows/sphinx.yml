@@ -44,7 +44,7 @@ jobs:
         architecture: x64
 
     # sphinxをインストール
-    - run: pip install -U sphinx sphinx_rtd_theme
+    - run: pip install -U sphinx sphinx_rtd_theme numpydoc
     # モジュールからrstファイルをdocsに作成
     # ベースのconf.pyなどは事前に作成しておく。
     - run: sphinx-apidoc -f -o ./docs ./src 
